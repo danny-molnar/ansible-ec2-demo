@@ -20,6 +20,14 @@ resource "aws_security_group" "my_app_sg" {
     cidr_blocks = ["192.168.0.0/16"]
   }
 
+  ingress {
+    description = "Allowing all traffic from outside"
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     description = "Allow access to the world"
     from_port   = 0
